@@ -1,0 +1,9 @@
+frames/
+clips/
+outputs/
+assets/
+__pycache__/
+*.pyc
+PV.mp4
+.DS_Store
+Thumbs.db
