@@ -1,0 +1,31 @@
+# 片段选取配置
+# 设计原则：只选"单人、静态、背景简单"的镜头，保证可复现 + 可横向对比
+
+pv_source: "PV.mp4"        # 输入 PV（2026 新番宣传 PV）
+frame_rate: 24
+
+# 选取策略：均匀抽取 N 个 2 秒片段，落在"单人 + 近静态"镜头上
+# 实际运行时用 02_select 脚本人工/自动标记镜头边界，这里给默认参数
+clips:
+  - id: A
+    in_sec: 12
+    out_sec: 14
+    note: "主角单人站立，背景纯色"
+  - id: B
+    in_sec: 30
+    out_sec: 32
+    note: "主角转身，背景简单"
+
+# 关键帧抽取：每片段取 6 帧（间隔 0.33s），用于帧级替换
+keyframe_interval_sec: 0.33
+
+# 人设图素材
+reference_sheet: "assets/character_sheet.png"
+
+# 替换参数（片段 A/B 完全相同，不特调 —— 可复用性核心）
+replace:
+  model: "image-gen"          # 真实接 Agnes / SD；mock 时走占位
+  prompt_base: "anime character, {character_desc}, full body, consistent art style"
+  negative_prompt: "deformed, extra limbs, blurry, low quality"
+  strength: 0.75             # 替换强度：保留原背景，替换人物
+  seed: 42                   # 固定 seed 保证可复现

@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pyyaml
+pillow
+numpy
+paddleocr   # 可选，人设图文字提取
+opencv-python  # 可选，光流插值

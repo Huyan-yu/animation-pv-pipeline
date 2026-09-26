@@ -1,0 +1,2 @@
+ffmpeg 不可用，成片输出为帧序列（outputs/clip_*_final_frames）。
+安装 ffmpeg 后重跑本阶段即可合成带音轨的 .mp4。
